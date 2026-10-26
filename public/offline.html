@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es-CO">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sin conexión · ÉLITE PÁDEL</title>
+    <meta name="theme-color" content="#080c18" />
+    <style>
+      body { margin: 0; min-height: 100dvh; display: grid; place-items: center; background: #080c18; color: #eef2ff; font-family: system-ui, sans-serif; text-align: center; padding: 24px; }
+      .ball { width: 72px; height: 72px; border-radius: 50%; background: #d4ff3a; margin: 0 auto 24px; }
+      h1 { font-size: 28px; margin: 0 0 8px; }
+      p { color: #9aa5c4; max-width: 320px; margin: 0 auto 24px; line-height: 1.5; }
+      button { background: #d4ff3a; color: #0b1020; border: 0; border-radius: 999px; padding: 14px 24px; font-weight: 700; font-size: 15px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="ball" aria-hidden="true"></div>
+      <h1>Estás sin conexión</h1>
+      <p>Conéctate a internet para reservar o pagar. Tus próximas clases siguen guardadas en la app.</p>
+      <button type="button" onclick="location.reload()">Reintentar</button>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+@import "tailwindcss";
+@import "./styles/tokens.css";
+
+@custom-variant light (&:where(.light, .light *));
+
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-surface-2: var(--c-surface-2);
+  --color-line: var(--c-line);
+  --color-text: var(--c-text);
+  --color-muted: var(--c-muted);
+  --color-ball: var(--c-ball);
+  --color-ball-ink: var(--c-ball-ink);
+  --color-ball-text: var(--c-ball-text);
+  --color-court: var(--c-court);
+  --color-ok: var(--c-ok);
+  --color-warn: var(--c-warn);
+  --color-bad: var(--c-bad);
+  --color-info: var(--c-info);
+  --font-display: var(--f-display);
+  --font-sans: var(--f-body);
+  --radius-card: var(--r-card);
+}
+
+@layer base {
+  html { -webkit-tap-highlight-color: transparent; scroll-padding-top: 88px; }
+  body { @apply bg-bg font-sans text-text antialiased; overflow-x: clip; }
+  ::selection { background: var(--c-ball); color: var(--c-ball-ink); }
+  :focus-visible { outline: 2px solid var(--c-ball); outline-offset: 3px; border-radius: 8px; }
+  .light :focus-visible { outline-color: var(--c-court); }
+}
+
+/* ── Utilidades de la marca ─────────────────────────────────── */
+@utility wrap {
+  width: 100%;
+  max-width: 1360px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+@utility display {
+  font-family: var(--f-display);
+  font-stretch: 62%;
+  font-weight: 850;
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+}
+@utility label-caps {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition duration-200 active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50;
+}
+@utility btn-ball {
+  @apply btn bg-ball text-ball-ink hover:brightness-110;
+}
+@utility btn-ghost {
+  @apply btn border border-line bg-surface text-text hover:bg-surface-2;
+}
+@utility btn-danger {
+  @apply btn border border-bad/40 text-bad hover:bg-bad/10;
+}
+@utility card {
+  @apply rounded-card border border-line bg-surface;
+}
+@utility input {
+  @apply w-full rounded-xl border border-line bg-surface-2/60 px-3.5 py-3 text-[15px] text-text outline-none transition placeholder:text-muted/70 focus:border-court focus:ring-4 focus:ring-court/20;
+}
+@utility field-label {
+  @apply mb-1.5 block text-sm font-semibold;
+}
+@utility skeleton {
+  @apply animate-pulse rounded-xl bg-surface-2;
+}
+@utility glass {
+  background: color-mix(in srgb, var(--c-bg) 70%, transparent);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+}
+
+/* Grano sutil */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.light .grain::after, .light.grain::after { opacity: 0.03; }
+
+.glow {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--c-ball) 20%, transparent), transparent 65%);
+  filter: blur(24px);
+}
+.glow-court { background: radial-gradient(circle, color-mix(in srgb, var(--c-court) 26%, transparent), transparent 65%); }
+
+/* Marquee */
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 30s linear infinite; }
+
+/* Pulso del botón de WhatsApp y de alertas */
+@keyframes pulse-ring { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.7); opacity: 0; } }
+.pulse-ring { animation: pulse-ring 2.4s var(--ease-out) infinite; }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track, .pulse-ring { animation: none !important; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

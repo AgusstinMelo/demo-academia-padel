@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es-CO">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>%TITLE%</title>
+    <meta name="description" content="%DESCRIPTION%" />
+    <meta name="theme-color" content="#080c18" />
+    <link rel="canonical" href="%URL%/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Élite" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:url" content="%URL%/" />
+    <meta property="og:title" content="%TITLE%" />
+    <meta property="og:description" content="%DESCRIPTION%" />
+    <meta property="og:image" content="%OG_IMAGE%" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <script type="application/ld+json">%JSON_LD%</script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!--
+      Shell estático de la portada: se pinta antes de que cargue el JavaScript (mejora FCP/LCP).
+      React lo reemplaza al montar. Los textos salen de src/config.ts (plugin en vite.config.ts).
+    -->
+    <template id="landing-shell">
+      <div class="grain">
+        <header class="fixed inset-x-0 top-0 z-50">
+          <p class="bg-ball py-1 text-center text-[11px] font-bold text-ball-ink">%DEMO_BANNER%</p>
+          <div class="wrap flex h-16 items-center gap-4">
+            <span class="flex items-center gap-2.5"><span class="grid size-9 place-items-center rounded-full bg-ball"></span><span class="display text-[22px] leading-none">%BRAND_1% <span class="text-ball-text">%BRAND_2%</span></span></span>
+            <a href="/app/login" class="btn-ball ml-auto py-2.5">%HERO_CTA%</a>
+          </div>
+        </header>
+        <main>
+          <section class="relative flex min-h-[100svh] items-end overflow-hidden pt-32 pb-14 sm:pb-20">
+            <img src="%HERO_SRC%" srcset="%HERO_SRCSET%" sizes="100vw" alt="%HERO_ALT%" width="2000" height="1333" fetchpriority="high" class="absolute inset-0 -z-10 size-full object-cover object-[65%_center]" />
+            <div class="absolute inset-0 -z-10 bg-gradient-to-t from-bg via-bg/55 to-bg/20"></div>
+            <div class="absolute inset-0 -z-10 bg-gradient-to-r from-bg/80 to-transparent"></div>
+            <div class="wrap">
+              <p class="label-caps mb-5 flex items-center gap-3 text-ball-text"><span class="h-px w-10 bg-ball"></span> %HERO_EYEBROW%</p>
+              <h1 class="display text-[length:var(--t-hero)]"><span class="block">%HERO_TOP%</span><span class="block text-ball-text">%HERO_ROTATING%</span><span class="block">%HERO_BOTTOM%</span></h1>
+              <div class="mt-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+                <p class="max-w-md text-lg text-text/85">%HERO_SUBTITLE%</p>
+                <div class="flex flex-wrap gap-3"><a href="/app/login" class="btn-ball px-7 py-4 text-base">%HERO_CTA%</a><a href="#packs" class="btn-ghost px-7 py-4 text-base">%HERO_SECONDARY%</a></div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </template>
+    <script>
+      if (location.pathname === "/") {
+        window.__eliteShell = true;
+        document.getElementById("root").appendChild(document.getElementById("landing-shell").content.cloneNode(true));
+      }
+    </script>
+    <noscript><p style="padding:24px;color:#eef2ff;background:#080c18">ÉLITE PÁDEL · Academia de pádel en Medellín. Escríbenos por WhatsApp para reservar tu clase de prueba.</p></noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

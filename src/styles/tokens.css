@@ -1,0 +1,50 @@
+/* ─────────────────────────────────────────────────────────────
+   ÉLITE PÁDEL · Tokens de diseño
+   Modo oscuro por defecto; la app ofrece modo claro (clase .light en <html>).
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --c-bg: #080c18;          /* azul noche */
+  --c-surface: #0f1628;
+  --c-surface-2: #172036;
+  --c-line: rgba(226, 232, 255, 0.1);
+  --c-text: #eef2ff;
+  --c-muted: #9aa5c4;
+  --c-ball: #d4ff3a;        /* amarillo-lima de la pelota */
+  --c-ball-ink: #0b1020;    /* texto sobre el acento */
+  --c-ball-text: #d4ff3a;   /* acento usado como texto (cambia en modo claro por contraste) */
+  --c-court: #3b82f6;       /* azul pista */
+  --c-ok: #4ade80;
+  --c-warn: #fbbf24;
+  --c-bad: #f87171;
+  --c-info: #60a5fa;
+  --c-grid: rgba(226, 232, 255, 0.07);
+
+  --f-display: "Archivo Variable", "Archivo", "Arial Narrow", sans-serif;
+  --f-body: "Manrope Variable", "Manrope", system-ui, sans-serif;
+  --t-hero: clamp(56px, 12vw, 168px);
+  --t-h2: clamp(40px, 7vw, 96px);
+
+  --r-card: 24px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --section-y: clamp(80px, 12vw, 168px);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: dark;
+}
+
+.light {
+  --c-bg: #f3f5fb;
+  --c-surface: #ffffff;
+  --c-surface-2: #eef1f8;
+  --c-line: rgba(11, 16, 32, 0.1);
+  --c-text: #0b1020;
+  --c-muted: #556080;
+  --c-ball-text: #4d6a00;
+  --c-court: #2563eb;
+  --c-ok: #15803d;
+  --c-warn: #b45309;
+  --c-bad: #dc2626;
+  --c-info: #1d4ed8;
+  --c-grid: rgba(11, 16, 32, 0.07);
+  color-scheme: light;
+}
